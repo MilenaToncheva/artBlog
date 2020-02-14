@@ -1,1 +1,66 @@
-<p>navbar works!</p>
+<!--Navbar-->
+<mdb-navbar SideClass="navbar navbar-expand-lg fixed-top navbar-dark rgba(255, 152, 0, 0.3) rgba-orange-light 
+
+" [containerInside]="false">
+
+  <!-- Navbar brand -->
+  <mdb-navbar-brand>
+      <ng-container *ngIf="isAuthenticated">
+        <a class="navbar-brand black-text" routerLink="/home">ArtBlog</a>
+      </ng-container>
+      <ng-container *ngIf="!isAuthenticated">
+        <a class="navbar-brand black-text" routerLink="/">ArtBlog</a>
+      </ng-container>
+     
+</mdb-navbar-brand>
+ 
+  <!-- Collapsible content -->
+  <links>
+
+    <!-- Links -->
+    <ul class="navbar-nav mr-auto">
+      <ng-container *ngIf="isAuthenticated">
+      <li class="nav-item active">
+        <a routerLink="/home" class="nav-link waves-light  black-text" mdbWavesEffect>Home<span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item active">
+        <a class="nav-link waves-light  black-text" mdbWavesEffect>My Articles</a>
+      </li>
+      
+      <li class="nav-item active">
+        <a routerLink="/articles/create"class="nav-link waves-light  black-text" mdbWavesEffect>Create Article</a>
+      </li>
+      </ng-container>
+     
+
+    </ul>
+    <!-- Links -->
+
+    <ul class="navbar-nav ml-auto nav-flex-icons">
+      <ng-container *ngIf="!isAuthenticated">
+      <li class="nav-item">
+        <a routerLink="/users/register" class="nav-link waves-light black-text" mdbWavesEffect>Register</a>
+      </li>
+      <li class="nav-item">
+        <a  routerLink="/users/login" class="nav-link waves-light black-text" mdbWavesEffect>Login</a>
+      </li>
+      </ng-container>
+      <ng-container *ngIf="isAuthenticated">
+     <li class="nav-item">
+        <a class="nav-link">
+          <div class="btn-group" mdbDropdown>
+            <mdb-icon fas icon="user" mdbDropdownToggle></mdb-icon>
+            <div class="dropdown-menu dropdown-menu-right dropdown-primary">
+              <a class="dropdown-item" routerLink="/users/:id/view-profile">View Profile</a>
+              <a class="dropdown-item" routerLink="/users/:id/edit-profile">Edit Profile</a>
+            </div>
+          </div>
+        </a>
+      </li>
+      <li class="nav-item">
+        <a routerLink="/users/logout" class="nav-link waves-light black-text" mdbWavesEffect>Logout</a>
+      </li>
+    </ng-container>
+    </ul>
+  </links>
+</mdb-navbar>

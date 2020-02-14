@@ -6,6 +6,7 @@ import{ToastrService} from 'ngx-toastr';
   providedIn: 'root'
 })
 export class AuthService {
+isAuthenticated:boolean=false;
 
   constructor(public afAuth:AngularFireAuth,
     private router:Router,
@@ -15,12 +16,41 @@ export class AuthService {
 
   register(email:string,password:string){
     this.afAuth.auth.createUserWithEmailAndPassword(email,password)
-    .then((data)=>{
+    .then(()=>{
       this.toastr.success('Registered successfully!','Success');
-this.router.navigate(['/users/login']);
+      this.router.navigate(['/users/login']);
     })
     .catch((err)=>{
       this.toastr.error(err.message,'Warning');
     })
+  }
+  login(email:string,password:string){
+    this.afAuth.auth
+    .signInWithEmailAndPassword(email,password)
+    .then((data)=>{
+      this.router.navigate(['/home']);
+      localStorage.setItem('email',data.user.email);
+      this.toastr.success('Logged in!', 'Success');
+        })
+    .catch((err)=>{
+    this.toastr.error(err.message, 'Warning');
+      });
+  }
+  logout(){
+this.afAuth.auth.signOut();
+localStorage.clear();
+this.router.navigate(['/']);
+  }
+
+  checkAuthentication() {
+    this.afAuth.authState.subscribe((userState) => {
+      if(userState) {
+        this.isAuthenticated= true;
+       
+      } else {
+        this.isAuthenticated= false;
+        
+      }
+    });
   }
 }

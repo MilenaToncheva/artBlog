@@ -1,1 +1,22 @@
-<p>register works!</p>
+
+<form class="text-center border border-light p-5" #registrationForm="ngForm" (onSubmit)="registerHandler(registrationForm)">
+    <p class="h4 mb-4">Register</p>
+
+
+    <input #emailInput="ngModel" name="email" ngModel type="email" id="defaultRegisterFormEmail" class="form-control mb-4" 
+    placeholder="E-mail"  required>
+    <div class="form-text  mb-4" *ngIf="emailInput.invalid && emailInput.touched">Please enter valid email</div>
+    
+    <input #password="ngModel" ngModel name="password" type="password" id="defaultRegisterFormPassword" class="form-control" 
+    placeholder="Password" aria-describedby="defaultRegisterFormPasswordHelpBlock" required minlength="6">
+    <div *ngIf="(password.invalid&&(password.touched||password.dirty))"id="defaultRegisterFormPasswordHelpBlock" class="form-text text-muted mb-4">
+      Invalid password!
+    </div>
+   
+   
+    <button [disabled]="registrationForm.invalid" mdbBtn color="info" block="true" class="my-4">Register</button>
+    <p>
+        Already Registered? <a routerLink="/users/login">Login</a>.
+      </p>
+</form>
+ 
