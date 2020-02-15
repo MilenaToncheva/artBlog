@@ -27,15 +27,15 @@ isAuthenticated:boolean=false;
   login(email:string,password:string){
     this.afAuth.auth
     .signInWithEmailAndPassword(email,password)
-    .then((data)=>{
+    .then((data)=>{this.checkAuthentication();
       this.router.navigate(['/home']);
       localStorage.setItem('email',data.user.email);
       this.toastr.success('Logged in!', 'Success');
-      this.checkAuthentication();
+      
       setTimeout(()=>{
 console.log(this.isAuthenticated);
       },1000);
-      console.log(this.isAuthenticated);
+      
         })
     .catch((err)=>{
     this.toastr.error(err.message, 'Warning');

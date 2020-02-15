@@ -1,17 +1,23 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { HomeComponent } from './articles/home/home.component';
-import { UseExistingWebDriver } from 'protractor/built/driverProviders';
 import { RegisterComponent } from './auth/register/register.component';
 import { LoginComponent } from './auth/login/login.component';
 import { LogoutComponent } from './auth/logout/logout.component';
 import { NotFoundComponent } from './not-found/not-found.component';
+import { ArticlesListComponent } from './articles/articles-list/articles-list.component';
+import { ArticleDetailsComponent } from './articles/article-details/article-details.component';
+import { ArticleCreateComponent } from './articles/article-create/article-create.component';
 
 
 const routes: Routes = [
   {
+    path:'',
+    pathMatch:'full',
+    redirectTo:'/articles/list'
+  },
+  {
     path:'home',
-    component:HomeComponent
+    component:ArticlesListComponent
   },
   
   {
@@ -29,9 +35,23 @@ const routes: Routes = [
       component:LogoutComponent
     }
     ]},
+    
     {
-      path:'',
-      component:HomeComponent
+      path:'articles',
+      children:[
+        {
+          path:'create',
+          component:ArticleCreateComponent
+        },
+        {
+          path:'details/:id',
+          component:ArticleDetailsComponent
+        },
+        {
+          path:'list',
+          component:ArticlesListComponent
+        }
+      ]
     },
     {
       path:'**',

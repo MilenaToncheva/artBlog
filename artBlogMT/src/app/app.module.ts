@@ -17,8 +17,8 @@ import { AngularFireModule } from '@angular/fire';
 import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { AngularFireAuthModule } from '@angular/fire/auth';
 
-import { MDBBootstrapModule, IconsModule } from 'angular-bootstrap-md';
-
+import { MDBBootstrapModule } from 'angular-bootstrap-md';
+import{BsDropdownModule}from 'ngx-bootstrap/dropdown';
 import { CoreModule } from './core/core.module';
 import { AuthModule } from './auth/auth.module';
 import { AuthService } from './auth/auth.service';
@@ -42,7 +42,7 @@ import { NotFoundComponent } from './not-found/not-found.component';
     BrowserAnimationsModule, // required animations module
     ToastrModule.forRoot(),
     MDBBootstrapModule,
-    IconsModule,
+   BsDropdownModule.forRoot(),
     CoreModule,
     AuthModule,
     ArticlesModule

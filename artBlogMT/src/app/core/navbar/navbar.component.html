@@ -8,10 +8,7 @@
       <ng-container *ngIf="isAuthenticated">
         <a class="navbar-brand black-text" routerLink="/home">ArtBlog</a>
       </ng-container>
-      <ng-container *ngIf="!isAuthenticated">
-        <a class="navbar-brand black-text" routerLink="/">ArtBlog</a>
-      </ng-container>
-     
+  
 </mdb-navbar-brand>
  
   <!-- Collapsible content -->
@@ -24,7 +21,7 @@
         <a routerLink="/home" class="nav-link waves-light  black-text" mdbWavesEffect>Home<span class="sr-only">(current)</span></a>
       </li>
       <li class="nav-item active">
-        <a class="nav-link waves-light  black-text" mdbWavesEffect>My Articles</a>
+        <a routerLink="/articles/my-articles"class="nav-link waves-light  black-text" mdbWavesEffect>My Articles</a>
       </li>
       
       <li class="nav-item active">
@@ -46,17 +43,9 @@
       </li>
       </ng-container>
       <ng-container *ngIf="isAuthenticated">
-     <li class="nav-item">
-        <a class="nav-link">
-          <div class="btn-group" mdbDropdown>
-            <mdb-icon fas icon="user" mdbDropdownToggle></mdb-icon>
-            <div class="dropdown-menu dropdown-menu-right dropdown-primary">
-              <a class="dropdown-item" routerLink="/users/:id/view-profile">View Profile</a>
-              <a class="dropdown-item" routerLink="/users/:id/edit-profile">Edit Profile</a>
-            </div>
-          </div>
-        </a>
-      </li>
+        <li class="nav-item">
+            <a routerLink="/users/profile" class="nav-link waves-light black-text" mdbWavesEffect>My Profile</a>
+          </li>
       <li class="nav-item">
         <a routerLink="/users/logout" class="nav-link waves-light black-text" mdbWavesEffect>Logout</a>
       </li>

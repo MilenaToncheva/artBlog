@@ -12,5 +12,5 @@ export class NavbarComponent implements OnInit {
 
   ngOnInit(): void {
   }
-isAuthenticated:boolean=this.authService.isAuthenticated;
+isAuthenticated:boolean=localStorage.getItem('email')!==null;
 }
