@@ -13,10 +13,10 @@ isAuthenticated:boolean=false;
     private toastr:ToastrService) {
       
     }
-
+    
   register(email:string,password:string){
     this.afAuth.auth.createUserWithEmailAndPassword(email,password)
-    .then(()=>{
+    .then((data)=>{
       this.toastr.success('Registered successfully!','Success');
       this.router.navigate(['/users/login']);
     })
@@ -31,6 +31,11 @@ isAuthenticated:boolean=false;
       this.router.navigate(['/home']);
       localStorage.setItem('email',data.user.email);
       this.toastr.success('Logged in!', 'Success');
+      this.checkAuthentication();
+      setTimeout(()=>{
+console.log(this.isAuthenticated);
+      },1000);
+      console.log(this.isAuthenticated);
         })
     .catch((err)=>{
     this.toastr.error(err.message, 'Warning');
@@ -40,6 +45,7 @@ isAuthenticated:boolean=false;
 this.afAuth.auth.signOut();
 localStorage.clear();
 this.router.navigate(['/']);
+this.checkAuthentication();
   }
 
   checkAuthentication() {
