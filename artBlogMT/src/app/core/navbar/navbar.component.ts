@@ -7,10 +7,12 @@ import{Router}from'@angular/router';
   styleUrls: ['./navbar.component.scss']
 })
 export class NavbarComponent implements OnInit {
+isAuthenticated:boolean=false;
 
   constructor(private authService:AuthService) { }
 
   ngOnInit(): void {
+   this.authService.getUserState().subscribe((user)=>this.isAuthenticated=!!user);
   }
-isAuthenticated:boolean=localStorage.getItem('email')!==null;
+  
 }

@@ -1,19 +1,24 @@
 import { Injectable } from '@angular/core';
 import{AngularFireAuth}from '@angular/fire/auth';
 import{Router}from '@angular/router';
+import{shareReplay}from 'rxjs/operators';
 import{ToastrService} from 'ngx-toastr';
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
-isAuthenticated:boolean=false;
+
+currentUser:any=null;
 
   constructor(public afAuth:AngularFireAuth,
     private router:Router,
     private toastr:ToastrService) {
       
     }
-    
+    get isAuthenticated(){
+return !!this.currentUser;
+    }
+
   register(email:string,password:string){
     this.afAuth.auth.createUserWithEmailAndPassword(email,password)
     .then((data)=>{
@@ -27,36 +32,26 @@ isAuthenticated:boolean=false;
   login(email:string,password:string){
     this.afAuth.auth
     .signInWithEmailAndPassword(email,password)
-    .then((data)=>{this.checkAuthentication();
+    .then((data)=>{
+         
       this.router.navigate(['/home']);
-      localStorage.setItem('email',data.user.email);
+     
       this.toastr.success('Logged in!', 'Success');
-      
-      setTimeout(()=>{
-console.log(this.isAuthenticated);
-      },1000);
       
         })
     .catch((err)=>{
     this.toastr.error(err.message, 'Warning');
       });
   }
-  logout(){
+  logout(){ 
 this.afAuth.auth.signOut();
-localStorage.clear();
+this.currentUser=null;
 this.router.navigate(['/']);
-this.checkAuthentication();
+
   }
 
-  checkAuthentication() {
-    this.afAuth.authState.subscribe((userState) => {
-      if(userState) {
-        this.isAuthenticated= true;
-       
-      } else {
-        this.isAuthenticated= false;
-        
-      }
-    });
-  }
+getUserState(){
+ return this.afAuth.authState;
+}
+  
 }
