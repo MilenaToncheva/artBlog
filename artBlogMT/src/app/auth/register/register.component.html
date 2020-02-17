@@ -4,7 +4,7 @@
 
 
     <input #emailInput="ngModel" name="email" ngModel type="email" id="defaultRegisterFormEmail" class="form-control mb-4" 
-    placeholder="E-mail"  required>
+    placeholder="E-mail"  required minlength="6">
     <div class="form-text  mb-4" *ngIf="emailInput.errors?.invalid && emailInput.touched">Please enter valid email</div>
     
     <input #password="ngModel" ngModel name="password" type="password" id="defaultRegisterFormPassword" class="form-control" 

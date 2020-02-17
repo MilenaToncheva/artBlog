@@ -1,1 +1,39 @@
-<p>article-create works!</p>
+<!-- Default horizontal form -->
+<h1>Create Article</h1>
+<form #articleCreateForm="ngForm" (ngSubmit)="handleArticleCreate(articleCreateForm)">
+    <!-- Grid row -->
+    <div class="form-group row">
+      <!-- Default input -->
+      <label for="inputTitle" class="col-sm-1 offset-sm-3 col-form-label">Title</label>
+      <div class="col-sm-4">
+        <input #title="ngModel" mdbInput type="text" ngModel name="title" class="form-control" id="inputTitle" placeholder="Title" minlength="6" required>
+      </div>
+      <p *ngIf="(title.touched||title.dirty)&&(title.invalid||title.errors?.required)">Please enter a title. It should have atleast 6 symbols length.</p>
+    </div>
+    <!-- Grid row -->
+    <div class="form-group row">
+        <!-- Default input -->
+        <label for="inputImageUrl" class="col-sm-1 offset-sm-3 col-form-label">Image URL</label>
+        <div class="col-sm-4">
+          <input #imageUrl="ngModel" name="imageUrl" ngModel mdbInput type="text" class="form-control" id="inputImageUrl" placeholder="Image URL" required >
+          <p *ngIf="(imageUrl.touched||imageUrl.dirty)&&(imageUrl.invalid||imageUrl.errors?.required)">Please enter an image URL</p>
+        </div>
+      </div>      
+    <!--Material textarea-->
+<div class="form-group row">
+    <label for="textAreaContent" class="col-sm-1 offset-sm-3 col-form-textarea">Content</label>
+    <div class=" col-sm-4">
+            <textarea #content="ngModel" name="content" ngModel type="text" id="form75" class="form-control md-textarea col-sm-20" rows="5" mdbInput placeholder="Content"></textarea>
+    </div>
+    <p *ngIf="(content.touched||content.dirty)&&(content.invalid||content.errors?.required)">Please enter the content of the article.</p>
+  </div>
+    <!-- Grid row -->
+    <div class="form-group row">
+        
+      <div class="col-sm-12 offset-sm-5">
+        <button   class="col-sm-1 "  type="submit" mdbBtn color="info">Create</button>
+      </div>
+    </div>
+    <!-- Grid row -->
+  </form>
+  

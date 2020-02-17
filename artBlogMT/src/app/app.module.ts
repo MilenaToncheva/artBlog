@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-
+import{HttpClientModule,HTTP_INTERCEPTORS, HttpClient}from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -24,6 +24,8 @@ import { AuthModule } from './auth/auth.module';
 import { AuthService } from './auth/auth.service';
 import { ArticlesModule } from './articles/articles.module';
 import { NotFoundComponent } from './not-found/not-found.component';
+import { TokenError } from '@angular/compiler/src/ml_parser/lexer';
+import { TokenInterceptor } from './interceptors/token.interceptor';
 
 
 @NgModule({
@@ -35,6 +37,7 @@ import { NotFoundComponent } from './not-found/not-found.component';
   imports: [
     BrowserModule,
     AppRoutingModule,
+    HttpClientModule,
     FormsModule,
     AngularFireModule.initializeApp(environment.firebaseConfig),
     AngularFirestoreModule,
@@ -47,7 +50,13 @@ import { NotFoundComponent } from './not-found/not-found.component';
     AuthModule,
     ArticlesModule
   ],
-  providers: [AuthService],
+  providers: [
+    {
+      provide:HTTP_INTERCEPTORS,
+      useClass:TokenInterceptor,
+      multi:true
+    }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

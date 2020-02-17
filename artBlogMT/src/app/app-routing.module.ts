@@ -7,6 +7,8 @@ import { NotFoundComponent } from './not-found/not-found.component';
 import { ArticlesListComponent } from './articles/articles-list/articles-list.component';
 import { ArticleDetailsComponent } from './articles/article-details/article-details.component';
 import { ArticleCreateComponent } from './articles/article-create/article-create.component';
+import { AuthGuard } from './auth/auth.guard';
+import { AuthService } from './auth/auth.service';
 
 
 const routes: Routes = [
@@ -32,7 +34,8 @@ const routes: Routes = [
     },
     {
       path:'logout',
-      component:LogoutComponent
+      component:LogoutComponent,
+      canActivate:[AuthGuard]
     }
     ]},
     
@@ -41,17 +44,16 @@ const routes: Routes = [
       children:[
         {
           path:'create',
-          component:ArticleCreateComponent
+          component:ArticleCreateComponent,
+          
         },
         {
           path:'details/:id',
-          component:ArticleDetailsComponent
+          component:ArticleDetailsComponent,
+          
         },
-        {
-          path:'list',
-          component:ArticlesListComponent
-        }
-      ]
+       
+      ],canActivate:[AuthGuard]
     },
     {
       path:'**',
