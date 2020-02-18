@@ -1,6 +1,6 @@
-{{bindingModel|json}}
+<div *ngIf="bindingModel">
 <h1>Create Article</h1>
-<form #articleCreateForm="ngForm" (ngSubmit)="handleArticleCreate()">
+<form #articleEditForm="ngForm" (ngSubmit)="articleEditHandler()">
     <!-- Grid row -->
     <div class="form-group row">
       <!-- Default input -->
@@ -31,9 +31,9 @@
     <div class="form-group row">
         
       <div class="col-sm-12 offset-sm-5">
-        <button [disabled]="articleCreateForm.invalid"  class="col-sm-1 "  type="submit" mdbBtn color="info">Create</button>
+        <button [disabled]="articleEditForm.invalid"  class="col-sm-1 "  type="submit" mdbBtn color="info">Edit</button>
       </div>
     </div>
     <!-- Grid row -->
   </form>
-  
+</div>

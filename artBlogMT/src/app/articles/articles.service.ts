@@ -1,6 +1,8 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { IArticle } from './models/article';
+import{Router}from '@angular/router';
+import{ToastrService}from 'ngx-toastr';
+
 import { ArticleListModel } from './models/article-list.model';
 import { map } from 'rxjs/operators';
 import { ArticleCreateModel } from './models/article-create.model';
@@ -13,21 +15,36 @@ const baseUrl:string="https://ng-artblog.firebaseio.com/articles";
 export class ArticlesService {
 
 
-  constructor(private http:HttpClient) { }
+  constructor(private http:HttpClient,
+    private toastr:ToastrService,
+    private router:Router
+    ) { }
 
 
   createArticle(article:ArticleCreateModel){
-return this.http.post(`${baseUrl}.json`,article);
+return this.http.post(`${baseUrl}.json`,article).subscribe(()=>{
+  this.toastr.success('Article created','Success');
+  this.router.navigate(['/articles/all']);
+});
   }
 
   getArticleById(id:string){
-   return this.http.get<ArticleListModel>(`${baseUrl}${id}.json`);
+   return this.http.get<ArticleListModel>(`${baseUrl}${id}/.json`);
+  
   }
-  editArticle(article:ArticleCreateComponent){
-    return this.http.patch(`${baseUrl}.json`,article);
+  editArticle(article){
+    return this.http.patch(`${baseUrl}.json`,article)
+    .subscribe(()=>{
+      this.toastr.success('Article edited!','Success');
+      this.router.navigate(['/articles/all']);
+    });
   }
   deleteArticle(id:string){
-    return this.http.delete(`${baseUrl}${id}.json`);
+    return this.http.delete(`${baseUrl}${id}.json`).
+    subscribe(()=>{
+      this.toastr.success('Article deleted!','Success');
+      this.router.navigate(['/articles/all']);
+    });
   }
 
   getAllArticles(){
@@ -37,7 +54,7 @@ const ids=Object.keys(res);
 const articles:ArticleListModel[]=[];
 for(let id of ids){
   articles.push(
-    new ArticleListModel(id, res[id].title, res[id].imageUrl, res[id].authorId, res[id].authorName, res[id].content)
+    new ArticleListModel(id, res[id].title, res[id].imageUrl,  res[id].content, res[id].authorName)
      
   )
 }

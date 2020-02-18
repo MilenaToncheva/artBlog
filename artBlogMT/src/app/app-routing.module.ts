@@ -15,7 +15,7 @@ const routes: Routes = [
   {
     path:'',
     pathMatch:'full',
-    redirectTo:'/articles/list'
+    redirectTo:'/articles/all'
   },
   {
     path:'home',
@@ -45,15 +45,19 @@ const routes: Routes = [
         {
           path:'create',
           component:ArticleCreateComponent,
-          
+          canActivate:[AuthGuard]
         },
         {
           path:'details/:id',
           component:ArticleDetailsComponent,
-          
+          canActivate:[AuthGuard]
         },
+        {
+          path:'all',
+          component:ArticlesListComponent
+        }
        
-      ],canActivate:[AuthGuard]
+      ]
     },
     {
       path:'**',

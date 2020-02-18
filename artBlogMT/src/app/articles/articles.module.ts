@@ -7,7 +7,8 @@ import { MDBBootstrapModule } from 'angular-bootstrap-md';
 import { ShortenPipe } from './shorten.pipe';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import{FormsModule}from '@angular/forms';
-
+import{RouterModule}from'@angular/router';
+import { EditArticleComponent } from './edit-article/edit-article.component'
 
 
 @NgModule({
@@ -15,12 +16,15 @@ import{FormsModule}from '@angular/forms';
     ArticlesListComponent, 
     ArticleDetailsComponent,
       ArticleCreateComponent,
-       ShortenPipe],
+       ShortenPipe,
+       EditArticleComponent],
   imports: [
     CommonModule,
     MDBBootstrapModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,
+    RouterModule
+    
   ],
   exports:[
     ArticlesListComponent,

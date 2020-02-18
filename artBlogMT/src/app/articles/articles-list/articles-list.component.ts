@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ArticlesService } from '../articles.service';
-import{HttpClient}from '@angular/common/http'
+import{Router}from '@angular/router'
 
 import{Observable}from 'rxjs';
 import{ArticleListModel}from '../models/article-list.model'
@@ -17,7 +17,5 @@ articles$:Observable<ArticleListModel[]>
   ngOnInit(): void {
     this.articles$=this.articlesService.getAllArticles();
   }
-readMoreHandler(article:ArticleListModel){
-  //this.articlesService.articleDetails(article);
-}
+
 }
