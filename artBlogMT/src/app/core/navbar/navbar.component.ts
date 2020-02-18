@@ -8,7 +8,7 @@ import { AngularFireAuth } from '@angular/fire/auth';
   styleUrls: ['./navbar.component.scss']
 })
 export class NavbarComponent implements OnInit {
-isAuthenticated:boolean;
+
 
   constructor(private authService:AuthService) { }
 

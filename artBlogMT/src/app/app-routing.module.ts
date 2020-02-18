@@ -15,11 +15,17 @@ const routes: Routes = [
   {
     path:'',
     pathMatch:'full',
-    redirectTo:'/articles/all'
+    redirectTo:'/index'
+  },
+  {
+    path:'index',
+    component:ArticlesListComponent,
+   
   },
   {
     path:'home',
-    component:ArticlesListComponent
+    component:ArticlesListComponent,
+    canActivate:[AuthGuard]
   },
   
   {

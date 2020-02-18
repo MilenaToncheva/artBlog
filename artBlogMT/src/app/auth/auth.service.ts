@@ -17,7 +17,7 @@ token:string=null;
       
     }
   get  isAuthenticated(){
-    
+
 return this.token!=null;
     }
 
@@ -38,7 +38,7 @@ return this.token!=null;
       this.firebase.auth.currentUser
       .getIdToken().then((token)=>{
         this.token=token;
-         console.log(token);
+         
       });
       this.router.navigate(['/home']); 
        this.toastr.success('Logged in!', 'Success');         
@@ -48,9 +48,9 @@ return this.token!=null;
       });
   }
   logout(){ 
-this.firebase.auth.signOut().then( resp=>{
-this.toastr.success('Logged out!','Success');
-this.router.navigate(['/home']);
+      this.firebase.auth.signOut().then( resp=>{
+      this.toastr.success('Logged out!','Success');
+      this.router.navigate(['']);
 
 this.token=null;
 });
@@ -65,15 +65,10 @@ getUserState(){
  
 
 getToken(){
-  let currentUser=this.firebase.auth.currentUser;
-  console.log(currentUser);
-  if(currentUser!=null){
-currentUser.getIdToken().then((token)=>{
+  let currentUser=this.firebase.auth.currentUser
+  .getIdToken().then((token)=>{
 this.token=token;
-return this.token;
-  })
-}
-this.token=null;
-return this.token;
+  });
+  return this.token;
 }
 }

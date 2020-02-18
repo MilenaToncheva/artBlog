@@ -5,10 +5,13 @@
 
   <!-- Navbar brand -->
   <mdb-navbar-brand>
-      <ng-container >
+    
+      <ng-container *ngIf="checkAuthentication()">
         <a class="navbar-brand black-text" routerLink="/home">ArtBlog</a>
       </ng-container>
-  
+      <ng-container *ngIf="!checkAuthentication()">
+        <a class="navbar-brand black-text" routerLink="/">ArtBlog</a>
+      </ng-container>
 </mdb-navbar-brand>
  
   <!-- Collapsible content -->

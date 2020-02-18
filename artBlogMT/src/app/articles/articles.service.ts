@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable, IterableDiffers } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import{Router}from '@angular/router';
 import{ToastrService}from 'ngx-toastr';
@@ -8,7 +8,7 @@ import { map } from 'rxjs/operators';
 import { ArticleCreateModel } from './models/article-create.model';
 import { ArticleCreateComponent } from './article-create/article-create.component';
 
-const baseUrl:string="https://ng-artblog.firebaseio.com/articles";
+const baseUrl:string="https://ng-artblog.firebaseio.com/articles/";
 @Injectable({
   providedIn: 'root'
 })
@@ -22,10 +22,7 @@ export class ArticlesService {
 
 
   createArticle(article:ArticleCreateModel){
-return this.http.post(`${baseUrl}.json`,article).subscribe(()=>{
-  this.toastr.success('Article created','Success');
-  this.router.navigate(['/articles/all']);
-});
+return this.http.post(`${baseUrl}.json`,article);
   }
 
   getArticleById(id:string){
@@ -48,18 +45,22 @@ return this.http.post(`${baseUrl}.json`,article).subscribe(()=>{
   }
 
   getAllArticles(){
-    return this.http.get(`${baseUrl}.json`).pipe(
-map((res:Response) => {
-const ids=Object.keys(res);
-const articles:ArticleListModel[]=[];
-for(let id of ids){
-  articles.push(
-    new ArticleListModel(id, res[id].title, res[id].imageUrl,  res[id].content, res[id].authorName)
+   
+  return this.http.get(`${baseUrl}.json`).pipe(
+   map((res:Response)=>{
+     const ids=Object.keys(res);
+     const articles:ArticleListModel[]=[];
+     for (const id of ids) {
+       articles.push({id,...res[id]});
+     }
+   for(let i in articles){
+     console.log(articles[i].title);
+   }
      
-  )
-}
-return articles;
-    }));
+     return articles;
+   }))
+
+   
   }
 
 
