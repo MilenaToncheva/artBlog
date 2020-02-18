@@ -71,4 +71,9 @@ this.token=token;
   });
   return this.token;
 }
+
+getCurrentUserName(){
+  return this.firebase.auth.currentUser.displayName;
+  }
+
 }

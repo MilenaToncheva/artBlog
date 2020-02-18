@@ -9,6 +9,7 @@ import { ArticleDetailsComponent } from './articles/article-details/article-deta
 import { ArticleCreateComponent } from './articles/article-create/article-create.component';
 import { AuthGuard } from './auth/auth.guard';
 import { AuthService } from './auth/auth.service';
+import { ArticleEditComponent } from './articles/article-edit/article-edit.component';
 
 
 const routes: Routes = [
@@ -56,6 +57,11 @@ const routes: Routes = [
         {
           path:'details/:id',
           component:ArticleDetailsComponent,
+          canActivate:[AuthGuard]
+        },
+        {
+          path:'edit/:id',
+          component: ArticleEditComponent,
           canActivate:[AuthGuard]
         },
         {

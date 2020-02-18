@@ -8,7 +8,9 @@ import { ShortenPipe } from './shorten.pipe';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import{FormsModule}from '@angular/forms';
 import{RouterModule}from'@angular/router';
-import { EditArticleComponent } from './edit-article/edit-article.component'
+import { ArticleEditComponent } from './article-edit/article-edit.component';
+
+import { ArticlesMineComponent } from './articles-mine/articles-mine.component'
 
 
 @NgModule({
@@ -17,7 +19,9 @@ import { EditArticleComponent } from './edit-article/edit-article.component'
     ArticleDetailsComponent,
       ArticleCreateComponent,
        ShortenPipe,
-       EditArticleComponent],
+       ArticleEditComponent,
+       ArticleEditComponent,
+       ArticlesMineComponent],
   imports: [
     CommonModule,
     MDBBootstrapModule,
@@ -30,6 +34,8 @@ import { EditArticleComponent } from './edit-article/edit-article.component'
     ArticlesListComponent,
      ArticleDetailsComponent,
        ArticleCreateComponent,
+       ArticleEditComponent,
+       ArticlesMineComponent,
       ShortenPipe]
 })
 export class ArticlesModule { }

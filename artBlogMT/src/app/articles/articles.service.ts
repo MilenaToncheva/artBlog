@@ -7,6 +7,7 @@ import { ArticleListModel } from './models/article-list.model';
 import { map } from 'rxjs/operators';
 import { ArticleCreateModel } from './models/article-create.model';
 import { ArticleCreateComponent } from './article-create/article-create.component';
+import { AuthService } from '../auth/auth.service';
 
 const baseUrl:string="https://ng-artblog.firebaseio.com/articles/";
 @Injectable({
@@ -17,7 +18,9 @@ export class ArticlesService {
 
   constructor(private http:HttpClient,
     private toastr:ToastrService,
-    private router:Router
+    private router:Router,
+    private authService:AuthService
+
     ) { }
 
 
@@ -61,6 +64,24 @@ return this.http.post(`${baseUrl}.json`,article);
    }))
 
    
+  }
+getMyArticles(){
+  const currentUserName=this.authService.getCurrentUserName();
+  return this.http.get(`${baseUrl}.json`).pipe(
+    map((res:Response)=>{
+      const ids=Object.keys(res);
+      let articles:ArticleListModel[]=[];
+      for (const id of ids) {
+        
+        articles.push({id,...res[id]});
+      }
+    for(let i in articles){
+      console.log(articles[i].title);
+    }
+      articles=articles.filter(a=>a.authorName===name)
+      return articles;
+    }))
+
   }
 
 

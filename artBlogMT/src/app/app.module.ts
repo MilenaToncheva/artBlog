@@ -21,10 +21,10 @@ import { MDBBootstrapModule } from 'angular-bootstrap-md';
 import{BsDropdownModule}from 'ngx-bootstrap/dropdown';
 import { CoreModule } from './core/core.module';
 import { AuthModule } from './auth/auth.module';
-import { AuthService } from './auth/auth.service';
+
 import { ArticlesModule } from './articles/articles.module';
 import { NotFoundComponent } from './not-found/not-found.component';
-import { TokenError } from '@angular/compiler/src/ml_parser/lexer';
+
 import { TokenInterceptor } from './interceptors/token.interceptor';
 
 
