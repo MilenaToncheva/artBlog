@@ -4,5 +4,6 @@ export class ArticleListModel{
   public  title:string,
   public imageUrl:string,
   public content:string,
-  public  authorName?:string){}
+  public authorEmail:string,
+  public  authorName:string){}
 }

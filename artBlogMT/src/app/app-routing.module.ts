@@ -10,6 +10,7 @@ import { ArticleCreateComponent } from './articles/article-create/article-create
 import { AuthGuard } from './auth/auth.guard';
 import { AuthService } from './auth/auth.service';
 import { ArticleEditComponent } from './articles/article-edit/article-edit.component';
+import { ArticlesMineComponent } from './articles/articles-mine/articles-mine.component';
 
 
 const routes: Routes = [
@@ -67,6 +68,11 @@ const routes: Routes = [
         {
           path:'all',
           component:ArticlesListComponent
+        }
+        ,{
+          path:'my-articles',
+          component:ArticlesMineComponent,
+          canActivate:[AuthGuard]
         }
        
       ]

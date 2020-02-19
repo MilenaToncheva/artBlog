@@ -72,8 +72,10 @@ this.token=token;
   return this.token;
 }
 
-getCurrentUserName(){
-  return this.firebase.auth.currentUser.displayName;
+getCurrentUserEmail(){
+  console.log(this.firebase.auth.currentUser.email);
+  return this.firebase.auth.currentUser.email;
+
   }
 
 }

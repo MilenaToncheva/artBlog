@@ -16,7 +16,7 @@ bindingModel: ArticleCreateModel
     private toastr:ToastrService,
     private router:Router
     ) { 
-      this.bindingModel=new ArticleCreateModel("","","","");
+      this.bindingModel=new ArticleCreateModel("","","","","");
     }
 
   ngOnInit(): void {

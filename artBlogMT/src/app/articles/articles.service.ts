@@ -66,7 +66,7 @@ return this.http.post(`${baseUrl}.json`,article);
    
   }
 getMyArticles(){
-  const currentUserName=this.authService.getCurrentUserName();
+  
   return this.http.get(`${baseUrl}.json`).pipe(
     map((res:Response)=>{
       const ids=Object.keys(res);
@@ -78,7 +78,7 @@ getMyArticles(){
     for(let i in articles){
       console.log(articles[i].title);
     }
-      articles=articles.filter(a=>a.authorName===name)
+      articles=articles.filter(a=>a.authorEmail===this.authService.getCurrentUserEmail())
       return articles;
     }))
 

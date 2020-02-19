@@ -8,7 +8,7 @@
       <div class="col-sm-4">
         <input #title="ngModel" mdbInput type="text" [(ngModel)]="bindingModel.title" name="title" class="form-control" id="inputTitle" placeholder="Title" minlength="6" required>
       </div>
-      <p *ngIf="(title.touched||title.dirty)&&(title.invalid||title.errors?.required)">Please enter a title. It should have atleast 6 symbols length.</p>
+      <p *ngIf="(title.touched||title.dirty)&&(title.invalid||title.errors?.required)">Please enter a title. It should have atleast 6 symbols.</p>
     </div>
     <!-- Grid row -->
     <div class="form-group row">
@@ -34,12 +34,20 @@
       <input #authorName="ngModel" [(ngModel)]="bindingModel.authorName" name="authorName"  mdbInput type="text" class="form-control" id="inputAuthorName" placeholder="Author Name" required >
       <p *ngIf="(authorName.touched||authorName.dirty)&&(authorName.invalid||authorName.errors?.required)">Please enter author's name.</p>
     </div>
+  </div> 
+  <div class="form-group row">
+    <!-- Default input -->
+    <label for="authorEmail" class="col-sm-1 offset-sm-3 col-form-label">Author email</label>
+    <div class="col-sm-4">
+      <input #authorEmail="ngModel" [(ngModel)]="bindingModel.authorEmail" name="authorEmail"  mdbInput type="text" class="form-control" id="inputAuthorEmail" placeholder="Author Email" required >
+      <p *ngIf="(authorEmail.touched||authorEmail.dirty)&&(authorEmail.invalid||authorEmail.errors?.required)">Please enter author's email.</p>
+    </div>
   </div>   
     <!-- Grid row -->
     <div class="form-group row">
         
       <div class="col-sm-12 offset-sm-5">
-        <button [disabled]="articleCreateForm.invalid"  class="col-sm-1 "  type="submit" mdbBtn color="info">Create</button>
+        <button [disabled]="articleCreateForm.invalid"  class="col-sm-2 "  type="submit" mdbBtn color="info">Create</button>
       </div>
     </div>
     <!-- Grid row -->

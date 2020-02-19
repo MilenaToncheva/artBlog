@@ -3,9 +3,8 @@
     <div class="row" >
   
     <!-- Grid column -->
-    <div class="col-lg-4 col-md-12 mb-lg-0 mb-4" >
+    <div class="col-lg-4 col-md-12 mb-lg-0 mb-4 offset-4" >
 
-      <!-- Featured image -->
       <div class="view overlay rounded z-depth-2 mb-4 waves-light" mdbWavesEffect>
         <img class="img-fluid" [src]="article.imageUrl" alt="Article Image">
         <a>
@@ -17,24 +16,23 @@
       <a href="#!" class="pink-text">
         <h6 class="font-weight-bold mb-3"><mdb-icon far icon="map" class="pr-2"></mdb-icon>Art</h6>
       </a>
-      <!-- Post title -->
         <h4 class="font-weight-bold mb-3"><strong>{{article.title}}</strong></h4>
-      <!-- Post data -->
         <p>by <a class="font-weight-bold">{{article.authorName}}</a></p>
-      <!-- Excerpt -->
         <p class="dark-grey-text">{{article.content}}</p>
   
-        
-        <div class="form-group row">
-            <div class="col-sm-6 offset-sm-2">
-             <button type="button"  routerLink="/articles/edit/{{id}}" class="col-sm-1 "  type="submit" mdbBtn color="info">
-                Edit</button>
-            </div>
-      
-            <div class="col-sm-6 offset-sm-3">
-             <button  class="col-sm-1 "  type="submit" mdbBtn color="info"(click)="deleteArticle()">Delete</button>
-            </div>
+        <div class="form-row mb-12">
+          <div class="col btns">
+            <button type="button"  routerLink="/articles/edit/{{id}}" class="col-sd-6 form-control"  type="submit" mdbBtn color="info">
+              Edit</button>
+          </div>
+          
+          <div class="col btns">
+            <button  class="col-sd-6 form-control "  type="submit" mdbBtn color="info"(click)="deleteArticle()">Delete</button>
+          </div>
         </div>
+        
   </div>
     
+</div>
+
 </div>
