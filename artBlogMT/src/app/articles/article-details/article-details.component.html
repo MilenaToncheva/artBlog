@@ -1,5 +1,5 @@
 
-<div *ngIf="article">
+<div  id="article-details" *ngIf="article">
     <div class="row" >
   
     <!-- Grid column -->
@@ -20,7 +20,7 @@
         <p>by <a class="font-weight-bold">{{article.authorName}}</a></p>
         <p class="dark-grey-text">{{article.content}}</p>
   
-        <div class="form-row mb-12">
+        <div class="form-row mb-12" *ngIf="article|canEditAndDelete">
           <div class="col btns">
             <button type="button"  routerLink="/articles/edit/{{id}}" class="col-sd-6 form-control"  type="submit" mdbBtn color="info">
               Edit</button>

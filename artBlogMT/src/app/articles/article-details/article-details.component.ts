@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ArticlesService } from '../articles.service';
 import { ArticleListModel } from '../models/article-list.model';
 import{ActivatedRoute}from '@angular/router';
+import { AuthService } from 'src/app/auth/auth.service';
 
 @Component({
   selector: 'app-article-details',
@@ -10,9 +11,12 @@ import{ActivatedRoute}from '@angular/router';
 })
 export class ArticleDetailsComponent implements OnInit {
 article:ArticleListModel;
+authorEmail:string;
+currentUserEmail:string;
 id:string;
   constructor(private articlesService:ArticlesService,
-    private activatedRoute:ActivatedRoute) { }
+    private activatedRoute:ActivatedRoute,
+    private authService:AuthService) { }
 
   ngOnInit(): void {
    this.id=this.activatedRoute.snapshot.params.id;
@@ -23,4 +27,6 @@ id:string;
 deleteArticle(){
   this.articlesService.deleteArticle(this.id);
 }
+
+
 }

@@ -11,7 +11,8 @@ import{RouterModule}from'@angular/router';
 import { ArticleEditComponent } from './article-edit/article-edit.component';
 
 import { ArticlesMineComponent } from './articles-mine/articles-mine.component';
-import { ArticleInitialComponent } from './article-initial/article-initial.component'
+import { ArticleInitialComponent } from './article-initial/article-initial.component';
+import { CanEditAndDeletePipe } from './can-edit-and-delete.pipe'
 
 
 @NgModule({
@@ -22,7 +23,8 @@ import { ArticleInitialComponent } from './article-initial/article-initial.compo
        ShortenPipe,
        ArticleEditComponent,
        ArticlesMineComponent,
-       ArticleInitialComponent],
+       ArticleInitialComponent,
+       CanEditAndDeletePipe],
   imports: [
     CommonModule,
     MDBBootstrapModule,
@@ -38,6 +40,7 @@ import { ArticleInitialComponent } from './article-initial/article-initial.compo
        ArticleEditComponent,
        ArticlesMineComponent,
        ArticleInitialComponent,
-      ShortenPipe]
+      ShortenPipe,
+    CanEditAndDeletePipe]
 })
 export class ArticlesModule { }

@@ -17,7 +17,6 @@ token:string=null;
       
     }
   get  isAuthenticated(){
-
 return this.token!=null;
     }
 
@@ -73,7 +72,7 @@ this.token=token;
 }
 
 getCurrentUserEmail(){
-  console.log(this.firebase.auth.currentUser.email);
+  
   return this.firebase.auth.currentUser.email;
 
   }

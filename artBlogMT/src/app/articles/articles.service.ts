@@ -61,9 +61,7 @@ return this.http.post(`${baseUrl}.json`,article);
    }
      
      return articles;
-   }))
-
-   
+   }))   
   }
 getMyArticles(){
   
@@ -84,5 +82,11 @@ getMyArticles(){
 
   }
 
-
+getAuthorsEmail(id:string){
+  let authorEmail:string;
+  this.getArticleById(id).subscribe(a=>{
+    authorEmail=a.authorEmail;
+  })
+  return authorEmail;
+}
 }
