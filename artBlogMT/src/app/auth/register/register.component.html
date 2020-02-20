@@ -1,5 +1,5 @@
 
-<form class="text-center border border-light p-5" #registrationForm="ngForm" (ngSubmit)="registerHandler(registrationForm)">
+<form class="text-center col-md-4 offset-4 border border-light p-5" #registrationForm="ngForm" (ngSubmit)="registerHandler(registrationForm)">
     <p class="h4 mb-4">Register</p>
 
 
@@ -13,8 +13,10 @@
       Invalid password!
     </div>
    
+    <div class="text-center col-md-12 " >
+      <button [disabled]="registrationForm.invalid" mdbBtn color="info" block="true" class="my-4" type="submit">Register</button>
+    </div>
     
-    <button [disabled]="registrationForm.invalid" mdbBtn color="info" block="true" class="my-4" type="submit">Register</button>
     <p>
         Already Registered? <a routerLink="/users/login">Login</a>.
       </p>

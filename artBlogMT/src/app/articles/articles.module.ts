@@ -10,7 +10,8 @@ import{FormsModule}from '@angular/forms';
 import{RouterModule}from'@angular/router';
 import { ArticleEditComponent } from './article-edit/article-edit.component';
 
-import { ArticlesMineComponent } from './articles-mine/articles-mine.component'
+import { ArticlesMineComponent } from './articles-mine/articles-mine.component';
+import { ArticleInitialComponent } from './article-initial/article-initial.component'
 
 
 @NgModule({
@@ -20,8 +21,8 @@ import { ArticlesMineComponent } from './articles-mine/articles-mine.component'
       ArticleCreateComponent,
        ShortenPipe,
        ArticleEditComponent,
-       ArticleEditComponent,
-       ArticlesMineComponent],
+       ArticlesMineComponent,
+       ArticleInitialComponent],
   imports: [
     CommonModule,
     MDBBootstrapModule,
@@ -36,6 +37,7 @@ import { ArticlesMineComponent } from './articles-mine/articles-mine.component'
        ArticleCreateComponent,
        ArticleEditComponent,
        ArticlesMineComponent,
+       ArticleInitialComponent,
       ShortenPipe]
 })
 export class ArticlesModule { }

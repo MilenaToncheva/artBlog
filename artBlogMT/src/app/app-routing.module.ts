@@ -11,6 +11,7 @@ import { AuthGuard } from './auth/auth.guard';
 import { AuthService } from './auth/auth.service';
 import { ArticleEditComponent } from './articles/article-edit/article-edit.component';
 import { ArticlesMineComponent } from './articles/articles-mine/articles-mine.component';
+import { ArticleInitialComponent } from './articles/article-initial/article-initial.component';
 
 
 const routes: Routes = [
@@ -21,7 +22,7 @@ const routes: Routes = [
   },
   {
     path:'index',
-    component:ArticlesListComponent,
+    component:ArticleInitialComponent,
    
   },
   {
@@ -67,7 +68,8 @@ const routes: Routes = [
         },
         {
           path:'all',
-          component:ArticlesListComponent
+          component:ArticlesListComponent,
+          canActivate:[AuthGuard]
         }
         ,{
           path:'my-articles',

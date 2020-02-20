@@ -20,6 +20,12 @@ export class NavbarComponent implements OnInit {
   }
   checkAuthentication():boolean{
 return this.authService.isAuthenticated;
+
   }
+  getUserEmail(){
+
+  const email=this.authService.getCurrentUserEmail();
   
+    return email;
+  }
 }

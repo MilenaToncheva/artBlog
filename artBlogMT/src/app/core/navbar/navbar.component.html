@@ -48,7 +48,7 @@
       </ng-container>
       <ng-container *ngIf="checkAuthentication()">
         <li class="nav-item">
-            <a routerLink="/users/profile" class="nav-link waves-light black-text" mdbWavesEffect>My Profile</a>
+            <p class="nav-link waves-light black-text"  >Welcome, {{getUserEmail()}} </p>
           </li>
       <li class="nav-item">
         <a routerLink="/users/logout" class="nav-link waves-light black-text" mdbWavesEffect>Logout</a>

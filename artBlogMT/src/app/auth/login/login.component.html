@@ -1,5 +1,5 @@
 <!-- Default form login -->
-<form #loginForm="ngForm" class="text-center border border-light p-5" (ngSubmit)="handleLogin(loginForm)">
+<form #loginForm="ngForm" class="text-center col-md-4 offset-4 border border-light p-5" (ngSubmit)="handleLogin(loginForm)">
     <p class="h4 mb-4">Login</p>
     <div class="form-group">
     <input #email="ngModel" name="email" ngModel type="email" id="defaultLoginFormEmail" class="form-control mb-4" placeholder="E-mail" required>
@@ -7,9 +7,12 @@
     </div>
     <input #password="ngModel" name="password" ngModel type="password" id="defaultLoginFormPassword" class="form-control mb-4" placeholder="Password" required>
    <div *ngIf="password.errors?.required&&password.touched">Please enter the password!</div>
+   <div class="text-center col-md-12 " >
     <button [disabled]="loginForm.invalid" mdbBtn color="info" block="true" class="my-4" type="submit">Login</button>
+   </div>
+   
     <p>Not a member?
       <a routerLink="/users/register">Register</a>
     </p>
    </form>
-   
+  
