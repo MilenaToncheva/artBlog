@@ -55,11 +55,7 @@ return this.http.post(`${baseUrl}.json`,article);
      const articles:ArticleListModel[]=[];
      for (const id of ids) {
        articles.push({id,...res[id]});
-     }
-   for(let i in articles){
-     console.log(articles[i].title);
-   }
-     
+     }     
      return articles;
    }))   
   }
@@ -73,20 +69,11 @@ getMyArticles(){
         
         articles.push({id,...res[id]});
       }
-    for(let i in articles){
-      console.log(articles[i].title);
-    }
       articles=articles.filter(a=>a.authorEmail===this.authService.getCurrentUserEmail())
       return articles;
     }))
 
   }
 
-getAuthorsEmail(id:string){
-  let authorEmail:string;
-  this.getArticleById(id).subscribe(a=>{
-    authorEmail=a.authorEmail;
-  })
-  return authorEmail;
-}
+
 }

@@ -5,7 +5,7 @@
     <h2 class="h1-responsive font-weight-bold my-5">All articles</h2>
     
     
-    <div class="row" *ngIf="(articles$|async)">
+    <div id="all-articles" class="row" *ngIf="(articles$|async)">
   
      
       <div  class="col-lg-4 col-md-12 mb-lg-0 mb-4" *ngFor="let article of (articles$|async)">
