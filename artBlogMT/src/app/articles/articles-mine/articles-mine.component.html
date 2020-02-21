@@ -3,8 +3,8 @@
    
     <h2 class="h1-responsive font-weight-bold my-5">My articles</h2>
     
-    <div id="my-articles" class="row" *ngIf="(articles$|async)">
-      <div class="col-lg-4 col-md-12 mb-lg-0 mb-4" *ngFor="let article of (articles$|async)">
+    <div id="my-articles" class="row" *ngIf="(articles)">
+      <div class="col-lg-4 col-md-12 mb-lg-0 mb-4" *ngFor="let article of articles">
         <div class="view overlay rounded z-depth-2 mb-4 waves-light" mdbWavesEffect>
           <img class="img-fluid" [src]="article.imageUrl" alt="Article Image">
           <a>
@@ -21,6 +21,6 @@
       </div>
     </div>
   
-  <div *ngIf="(articles$|async).length==0"><p>You don't have any articles yet.</p></div>
+  <div *ngIf="!(articles)||articles.length==0"><p>You don't have any articles yet.</p></div>
   </section> 
   

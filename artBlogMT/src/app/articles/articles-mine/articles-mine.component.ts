@@ -9,13 +9,16 @@ import { ArticleListModel } from '../models/article-list.model';
   styleUrls: ['./articles-mine.component.scss']
 })
 export class ArticlesMineComponent implements OnInit {
-  articles$:Observable<ArticleListModel[]>
+  articles:ArticleListModel[]
   constructor(private articlesService:ArticlesService,
     ) { }
 
   ngOnInit(): void {
 
-    this.articles$=this.articlesService.getMyArticles();
+    this.articlesService.getMyArticles().subscribe((data)=>{
+      this.articles=data;
+    });
+    
   }
 
 }
