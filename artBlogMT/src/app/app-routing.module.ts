@@ -22,7 +22,8 @@ const routes: Routes = [
   },
   {
     path:'index',
-    component:ArticleInitialComponent,
+    component:ArticleInitialComponent
+   
    
   },
   {
