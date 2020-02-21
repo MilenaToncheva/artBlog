@@ -72,9 +72,8 @@ this.token=token;
 }
 
 getCurrentUserEmail(){
-  
-  return this.firebase.auth.currentUser.email;
 
-  }
+  return this.firebase.auth.currentUser.email;
+}
 
 }

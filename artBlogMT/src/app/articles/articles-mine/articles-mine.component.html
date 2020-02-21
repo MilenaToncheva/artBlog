@@ -21,6 +21,6 @@
       </div>
     </div>
   
-  <ng-container *ngIf="!(articles$|async)"><p>You don't have any articles yet.</p></ng-container>
+  <div *ngIf="(articles$|async).length==0"><p>You don't have any articles yet.</p></div>
   </section> 
   
