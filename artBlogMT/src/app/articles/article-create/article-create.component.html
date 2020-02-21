@@ -23,7 +23,7 @@
 <div class="form-group row">
     <label for="textAreaContent" class="col-sm-1 offset-sm-3 col-form-textarea">Content</label>
     <div class=" col-sm-4">
-            <textarea #content="ngModel" name="content" [(ngModel)]="bindingModel.content" type="text" id="form75" class="form-control md-textarea col-sm-20" rows="5" mdbInput placeholder="Content"></textarea>
+            <textarea #content="ngModel" name="content" [(ngModel)]="bindingModel.content" type="text" id="form75" class="form-control md-textarea col-sm-20" rows="5" mdbInput placeholder="Content" required minlength="20"></textarea>
     </div>
     <p *ngIf="(content.touched||content.dirty)&&(content.invalid||content.errors?.required)">Please enter the content of the article.</p>
   </div>
@@ -39,7 +39,7 @@
     <!-- Default input -->
     <label for="authorEmail" class="col-sm-1 offset-sm-3 col-form-label">Author email</label>
     <div class="col-sm-4">
-      <input #authorEmail="ngModel" [(ngModel)]="bindingModel.authorEmail" name="authorEmail"  mdbInput type="text" class="form-control" id="inputAuthorEmail" placeholder="Author Email" required >
+      <input #authorEmail="ngModel" [(ngModel)]="bindingModel.authorEmail" name="authorEmail"  mdbInput type="text" class="form-control" id="inputAuthorEmail" placeholder="Author Email" required pattern="^[^\s@]+@[^\s@]+\.[^\s@]+$">
       <p *ngIf="(authorEmail.touched||authorEmail.dirty)&&(authorEmail.invalid||authorEmail.errors?.required)">Please enter author's email.</p>
     </div>
   </div>   

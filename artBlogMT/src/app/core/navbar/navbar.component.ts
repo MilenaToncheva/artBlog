@@ -9,13 +9,13 @@ import { ArticlesService } from 'src/app/articles/articles.service';
   styleUrls: ['./navbar.component.scss']
 })
 export class NavbarComponent implements OnInit {
-currentUserEmail:string;
+
 
   constructor(private authService:AuthService,
     ) { }
 
   ngOnInit(): void {
-  this.currentUserEmail=this.getUserEmail();
+  
  
   }
   checkAuthentication():boolean{

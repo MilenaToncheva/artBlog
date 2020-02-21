@@ -8,7 +8,7 @@ import { NgForm } from '@angular/forms';
   styleUrls: ['./register.component.scss']
 })
 export class RegisterComponent implements OnInit {
-  emailPattern="^[^\s@]+@[^\s@]+\.[^\s@]+$";
+ 
   constructor(private authService:AuthService) { }
 
   ngOnInit(): void {

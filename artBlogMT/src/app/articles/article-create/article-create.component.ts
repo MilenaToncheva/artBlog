@@ -23,7 +23,7 @@ bindingModel: ArticleCreateModel
 
   }
   handleArticleCreate(){
-    console.log(this.bindingModel);
+    
    this.articleService.createArticle(this.bindingModel)
    .subscribe(()=>{
     this.toastr.success('Article created','Success');

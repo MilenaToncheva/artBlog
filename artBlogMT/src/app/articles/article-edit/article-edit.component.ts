@@ -18,7 +18,7 @@ export class ArticleEditComponent implements OnInit {
   
     ngOnInit(): void {
       this.id=this.route.snapshot.params.id;
-      console.log(this.id);
+      //console.log(this.id);
       this.articlesService.getArticleById(this.id)
       .subscribe((data)=>{
         this.bindingModel=data;
