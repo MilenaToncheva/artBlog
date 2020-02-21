@@ -4,14 +4,14 @@
 
 
     <input #emailInput="ngModel" name="email" ngModel type="email" id="defaultRegisterFormEmail" class="form-control mb-4" 
-    placeholder="E-mail"  required minlength="6">
-    <div class="form-text  mb-4" *ngIf="emailInput.errors?.invalid && emailInput.touched">Please enter valid email</div>
+    placeholder="E-mail"  required pattern="^[^\s@]+@[^\s@]+\.[^\s@]+$">
+    <div class="form-text  mb-4" *ngIf="(emailInput.errors?.invalid||emailInput.errors?.required||emailInput.errors?.pattern) && (emailInput.touched||emailInput.dirty)">Please enter valid email</div>
     
     <input #password="ngModel" ngModel name="password" type="password" id="defaultRegisterFormPassword" class="form-control" 
-    placeholder="Password" aria-describedby="defaultRegisterFormPasswordHelpBlock" required minlength="6">
-    <div *ngIf="(password.errors?.invalid&&(password.touched||password.dirty))"id="defaultRegisterFormPasswordHelpBlock" class="form-text text-muted mb-4">
-      Invalid password!
-    </div>
+    placeholder="Password" aria-describedby="defaultRegisterFormPasswordHelpBlock" required minlength="6" >
+    <div *ngIf="(password.touched||password.dirty)&&(password.errors?.invalid ||password.errors?.required)"id="defaultRegisterFormPasswordHelpBlock" class="form-text text-muted mb-4">
+      Invalid password! It should be atleast 6 symbols.
+    </div>  
    
     <div class="text-center col-md-12 " >
       <button [disabled]="registrationForm.invalid" mdbBtn color="info" block="true" class="my-4" type="submit">Register</button>
