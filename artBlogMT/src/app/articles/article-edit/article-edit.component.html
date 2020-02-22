@@ -39,7 +39,7 @@
         <!-- Default input -->
         <label for="authorEmail" class="col-sm-1 offset-sm-3 col-form-label">Author email</label>
         <div class="col-sm-4">
-          <input #authorEmail="ngModel" [(ngModel)]="bindingModel.authorEmail" name="authorEmail"  mdbInput type="text" class="form-control" id="inputAuthorEmail" placeholder="Author Email" required pattern="[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?" readonly>
+          <input #authorEmail="ngModel" [(ngModel)]="bindingModel.authorEmail" name="authorEmail"  mdbInput type="text" class="form-control" id="inputAuthorEmail" placeholder="Author Email" required pattern="^[^\s@]+@[^\s@]+\.[^\s@]+$" readonly>
           <p *ngIf="(authorEmail.touched||authorEmail.dirty)&&(authorEmail.invalid||authorEmail.errors?.required)">Please enter author's email.</p>
         </div>
       </div>

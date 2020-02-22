@@ -5,11 +5,11 @@
 
     <input #emailInput="ngModel" name="email" ngModel type="email" id="defaultRegisterFormEmail" class="form-control mb-4" 
     placeholder="E-mail"  required pattern="^[^\s@]+@[^\s@]+\.[^\s@]+$">
-    <div class="form-text  mb-4" *ngIf="(emailInput.invalid||emailInput.errors?.required) && (emailInput.touched||emailInput.dirty)">Please enter valid email</div>
+    <div  class="form-text  mb-4 err" *ngIf="(emailInput.invalid||emailInput.errors?.required) && (emailInput.touched||emailInput.dirty)">Please enter valid email</div>
     
     <input #password="ngModel" ngModel name="password" type="password" id="defaultRegisterFormPassword" class="form-control" 
     placeholder="Password" aria-describedby="defaultRegisterFormPasswordHelpBlock" required minlength="6" >
-    <div *ngIf="(password.touched||password.dirty)&&(password.invalid ||password.errors?.required)"id="defaultRegisterFormPasswordHelpBlock" class="form-text text-muted mb-4">
+    <div *ngIf="(password.touched||password.dirty)&&(password.invalid ||password.errors?.required)"id="defaultRegisterFormPasswordHelpBlock" class="form-text mb-4 err">
       Invalid password! It should be atleast 6 symbols.
     </div>  
    
